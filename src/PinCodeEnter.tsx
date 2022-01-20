@@ -1,6 +1,6 @@
 import delay from './delay'
 import PinCode, { PinStatus } from './PinCode'
-import { PinResultStatus, noBiometricsConfig } from './utils'
+import { PinResultStatus } from './utils'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as React from 'react'
@@ -11,7 +11,6 @@ import {
   View,
   ViewStyle
 } from 'react-native'
-import * as Keychain from 'react-native-keychain'
 import TouchID from 'react-native-touch-id'
 
 /**
@@ -43,7 +42,6 @@ export interface IProps {
   passwordComponent: any
   passwordLength?: number
   pinAttemptsAsyncStorageName: string
-  pinCodeKeychainName: string
   pinCodeVisible?: boolean
   pinStatusExternal: PinResultStatus
   status: PinStatus
@@ -100,7 +98,6 @@ export interface IState {
 }
 
 class PinCodeEnter extends React.PureComponent<IProps, IState> {
-  keyChainResult: string | undefined = undefined
 
   static defaultProps = {
     passcodeFallback: true,
@@ -112,16 +109,6 @@ class PinCodeEnter extends React.PureComponent<IProps, IState> {
     this.state = { pinCodeStatus: PinResultStatus.initial, locked: false }
     this.endProcess = this.endProcess.bind(this)
     this.launchTouchID = this.launchTouchID.bind(this)
-    if (!this.props.storedPin) {
-      Keychain.getInternetCredentials(
-        this.props.pinCodeKeychainName,
-        noBiometricsConfig
-      ).then(result => {
-        this.keyChainResult = result && result.password || undefined
-      }).catch(error => {
-        console.log('PinCodeEnter: ', error)
-      })
-    }
   }
 
   componentDidMount() {
@@ -167,7 +154,7 @@ class PinCodeEnter extends React.PureComponent<IProps, IState> {
         this.props.pinAttemptsAsyncStorageName
       )
       let pinAttempts = pinAttemptsStr ? +pinAttemptsStr : 0
-      const pin = this.props.storedPin || this.keyChainResult
+      const pin = this.props.storedPin;
       if (pinValidOverride !== undefined ? pinValidOverride : pin === pinCode) {
         this.setState({ pinCodeStatus: PinResultStatus.success })
         AsyncStorage.multiRemove([
@@ -223,7 +210,7 @@ class PinCodeEnter extends React.PureComponent<IProps, IState> {
           title: this.props.touchIDTitle
         })
       ).then((success: any) => {
-        this.endProcess(this.props.storedPin || this.keyChainResult)
+        this.endProcess(this.props.storedPin)
       })
     } catch (e) {
       if (!!this.props.callbackErrorTouchId) {
@@ -235,8 +222,7 @@ class PinCodeEnter extends React.PureComponent<IProps, IState> {
   }
 
   render() {
-    const pin =
-      this.props.storedPin || this.keyChainResult
+    const pin = this.props.storedPin
     return (
       <View
         style={[

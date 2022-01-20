@@ -1,9 +1,7 @@
 import PinCode, { PinStatus } from './PinCode'
-import { noBiometricsConfig } from './utils'
 
 import * as React from 'react'
 import { StyleProp, StyleSheet, TextStyle, View, ViewStyle } from 'react-native'
-import * as Keychain from 'react-native-keychain'
 
 /**
  * Pin Code Choose PIN Page
@@ -26,7 +24,6 @@ export interface IProps {
   numbersButtonOverlayColor?: string
   passwordComponent: any
   passwordLength?: number
-  pinCodeKeychainName: string
   pinCodeVisible?: boolean
   storePin: any
   styleAlphabet?: StyleProp<TextStyle>
@@ -100,13 +97,6 @@ class PinCodeChoose extends React.PureComponent<IProps, IState> {
     if (pinCode === this.state.pinCode) {
       if (this.props.storePin) {
         this.props.storePin(pinCode)
-      } else {
-        await Keychain.setInternetCredentials(
-          this.props.pinCodeKeychainName,
-          this.props.pinCodeKeychainName,
-          pinCode,
-          noBiometricsConfig
-        )
       }
       if (!!this.props.finishProcess) this.props.finishProcess(pinCode)
     } else {

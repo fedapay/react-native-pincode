@@ -6,12 +6,10 @@ const utils_1 = require("./utils");
 const async_storage_1 = require("@react-native-async-storage/async-storage");
 const React = require("react");
 const react_native_1 = require("react-native");
-const Keychain = require("react-native-keychain");
 const react_native_touch_id_1 = require("react-native-touch-id");
 class PinCodeEnter extends React.PureComponent {
     constructor(props) {
         super(props);
-        this.keyChainResult = undefined;
         this.endProcess = async (pinCode) => {
             if (!!this.props.endProcessFunction) {
                 this.props.endProcessFunction(pinCode);
@@ -25,7 +23,7 @@ class PinCodeEnter extends React.PureComponent {
                 this.props.changeInternalStatus(utils_1.PinResultStatus.initial);
                 const pinAttemptsStr = await async_storage_1.default.getItem(this.props.pinAttemptsAsyncStorageName);
                 let pinAttempts = pinAttemptsStr ? +pinAttemptsStr : 0;
-                const pin = this.props.storedPin || this.keyChainResult;
+                const pin = this.props.storedPin;
                 if (pinValidOverride !== undefined ? pinValidOverride : pin === pinCode) {
                     this.setState({ pinCodeStatus: utils_1.PinResultStatus.success });
                     async_storage_1.default.multiRemove([
@@ -59,13 +57,6 @@ class PinCodeEnter extends React.PureComponent {
         this.state = { pinCodeStatus: utils_1.PinResultStatus.initial, locked: false };
         this.endProcess = this.endProcess.bind(this);
         this.launchTouchID = this.launchTouchID.bind(this);
-        if (!this.props.storedPin) {
-            Keychain.getInternetCredentials(this.props.pinCodeKeychainName, utils_1.noBiometricsConfig).then(result => {
-                this.keyChainResult = result && result.password || undefined;
-            }).catch(error => {
-                console.log('PinCodeEnter: ', error);
-            });
-        }
     }
     componentDidMount() {
         if (!this.props.touchIDDisabled)
@@ -105,7 +96,7 @@ class PinCodeEnter extends React.PureComponent {
             await react_native_touch_id_1.default.authenticate(this.props.touchIDSentence, Object.assign({}, optionalConfigObject, {
                 title: this.props.touchIDTitle
             })).then((success) => {
-                this.endProcess(this.props.storedPin || this.keyChainResult);
+                this.endProcess(this.props.storedPin);
             });
         }
         catch (e) {
@@ -118,7 +109,7 @@ class PinCodeEnter extends React.PureComponent {
         }
     }
     render() {
-        const pin = this.props.storedPin || this.keyChainResult;
+        const pin = this.props.storedPin;
         return (React.createElement(react_native_1.View, { style: [
                 styles.container,
                 this.props.styleContainer

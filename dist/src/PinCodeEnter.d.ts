@@ -30,7 +30,6 @@ export interface IProps {
     passwordComponent: any;
     passwordLength?: number;
     pinAttemptsAsyncStorageName: string;
-    pinCodeKeychainName: string;
     pinCodeVisible?: boolean;
     pinStatusExternal: PinResultStatus;
     status: PinStatus;
@@ -85,7 +84,6 @@ export interface IState {
     locked: boolean;
 }
 declare class PinCodeEnter extends React.PureComponent<IProps, IState> {
-    keyChainResult: string | undefined;
     static defaultProps: {
         passcodeFallback: boolean;
         styleContainer: any;

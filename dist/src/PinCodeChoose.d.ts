@@ -21,7 +21,6 @@ export interface IProps {
     numbersButtonOverlayColor?: string;
     passwordComponent: any;
     passwordLength?: number;
-    pinCodeKeychainName: string;
     pinCodeVisible?: boolean;
     storePin: any;
     styleAlphabet?: StyleProp<TextStyle>;

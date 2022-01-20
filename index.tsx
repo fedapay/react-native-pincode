@@ -2,7 +2,7 @@ import ApplicationLocked from "./src/ApplicationLocked";
 import { PinStatus } from "./src/PinCode";
 import PinCodeChoose from "./src/PinCodeChoose";
 import PinCodeEnter from "./src/PinCodeEnter";
-import { hasPinCode, deletePinCode, resetInternalStates, PinResultStatus } from "./src/utils";
+import { resetInternalStates, PinResultStatus } from "./src/utils";
 
 import AsyncStorage from '@react-native-community/async-storage'
 import * as React from "react";
@@ -209,7 +209,6 @@ class PINCode extends React.PureComponent<IProps, IState> {
             numbersButtonOverlayColor={this.props.numbersButtonOverlayColor}
             passwordComponent={this.props.passwordComponent}
             passwordLength={this.props.passwordLength}
-            pinCodeKeychainName={this.props.pinCodeKeychainName || pinCodeKeychainNameDefault}
             pinCodeVisible={this.props.pinCodeVisible}
             storePin={this.props.storePin || null}
             styleAlphabet={this.props.styleAlphabet}
@@ -282,7 +281,6 @@ class PINCode extends React.PureComponent<IProps, IState> {
             passwordComponent={this.props.passwordComponent}
             passwordLength={this.props.passwordLength}
             pinAttemptsAsyncStorageName={this.props.pinAttemptsAsyncStorageName || pinAttemptsAsyncStorageNameDefault}
-            pinCodeKeychainName={this.props.pinCodeKeychainName || pinCodeKeychainNameDefault}
             pinCodeVisible={this.props.pinCodeVisible}
             pinStatusExternal={this.props.pinStatus || PinResultStatus.initial}
             status={PinStatus.enter}
@@ -338,14 +336,6 @@ class PINCode extends React.PureComponent<IProps, IState> {
       </View>
     );
   }
-}
-
-export function hasUserSetPinCode(serviceName?: string) {
-  return hasPinCode(serviceName || pinCodeKeychainNameDefault);
-}
-
-export function deleteUserPinCode(serviceName?: string) {
-  return deletePinCode(serviceName || pinCodeKeychainNameDefault);
 }
 
 export function resetPinCodeInternalStates(pinAttempsStorageName?: string,

@@ -1,10 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const PinCode_1 = require("./PinCode");
-const utils_1 = require("./utils");
 const React = require("react");
 const react_native_1 = require("react-native");
-const Keychain = require("react-native-keychain");
 class PinCodeChoose extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -18,9 +16,6 @@ class PinCodeChoose extends React.PureComponent {
             if (pinCode === this.state.pinCode) {
                 if (this.props.storePin) {
                     this.props.storePin(pinCode);
-                }
-                else {
-                    await Keychain.setInternetCredentials(this.props.pinCodeKeychainName, this.props.pinCodeKeychainName, pinCode, utils_1.noBiometricsConfig);
                 }
                 if (!!this.props.finishProcess)
                     this.props.finishProcess(pinCode);
