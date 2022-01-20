@@ -37,7 +37,7 @@ export interface IProps {
   customBackSpaceIcon?: Function
   emptyColumnComponent: any
   endProcess: (pinCode: string, isErrorValidation?: boolean) => void
-  launchTouchID?: () => void 
+  launchTouchID?: () => void
   getCurrentLength?: (length: number) => void
   iconButtonDeleteDisabled?: boolean
   numbersButtonOverlayColor: string
@@ -247,14 +247,14 @@ class PinCode extends React.PureComponent<IProps, IState> {
       ["8", "TUV"],
       ["9", "WXYZ"],
       ["0", " "]
-  ]); 
+  ]);
     const disabled =
       (this.state.password.length === this.props.passwordLength ||
         this.state.showError) &&
       !this.state.attemptFailed;
     return (
       <Animate
-        show={true}
+        show={false}
         start={{
           opacity: 1
         }}
@@ -381,7 +381,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
           return (
             <Animate
               key={val}
-              show={true}
+              show={false}
               start={{
                 opacity: 0.5,
                 height: this._circleSizeEmpty,
@@ -519,14 +519,6 @@ class PinCode extends React.PureComponent<IProps, IState> {
                   style={{ opacity: opacity }}
                 />
               )}
-              <Text
-                style={[
-                  styles.textDeleteButton,
-                  this.props.styleDeleteButtonText,
-                  { color: this.state.colorDelete, opacity: opacity }
-                ]}>
-                {this.props.buttonDeleteText}
-              </Text>
             </>
           }
         </View>
@@ -584,7 +576,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
           this.props.styleContainer
         ]}>
         <Animate
-          show={true}
+          show={false}
           start={{
             opacity: 0,
             colorTitle: this.props.styleColorTitle,
@@ -729,7 +721,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
                 styles.colEmpty,
                 this.props.styleEmptyColumn
               ]}>
-              {this.props.emptyColumnComponent 
+              {this.props.emptyColumnComponent
                 ? this.props.emptyColumnComponent(this.props.launchTouchID)
                 : null
               }
@@ -752,7 +744,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
                 this.props.styleColumnButtons
               ]}>
               <Animate
-                show={true}
+                show={false}
                 start={{
                   opacity: 0.5
                 }}
