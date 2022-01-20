@@ -90,7 +90,7 @@ class PinCode extends React.PureComponent {
             const disabled = (this.state.password.length === this.props.passwordLength ||
                 this.state.showError) &&
                 !this.state.attemptFailed;
-            return (React.createElement(Animate_1.default, { show: false, start: {
+            return (React.createElement(Animate_1.default, { show: true, start: {
                     opacity: 1
                 }, update: {
                     opacity: [
@@ -143,7 +143,7 @@ class PinCode extends React.PureComponent {
             return (React.createElement(react_native_1.View, { style: [styles.topViewCirclePassword, this.props.styleCircleHiddenPassword] }, _.range(this.props.passwordLength).map((val) => {
                 const lengthSup = ((password.length >= val + 1 && !changeScreen) || showError) &&
                     !attemptFailed;
-                return (React.createElement(Animate_1.default, { key: val, show: false, start: {
+                return (React.createElement(Animate_1.default, { key: val, show: true, start: {
                         opacity: 0.5,
                         height: this._circleSizeEmpty,
                         width: this._circleSizeEmpty,
@@ -315,7 +315,7 @@ class PinCode extends React.PureComponent {
                 styles.container,
                 this.props.styleContainer
             ] },
-            React.createElement(Animate_1.default, { show: false, start: {
+            React.createElement(Animate_1.default, { show: true, start: {
                     opacity: 0,
                     colorTitle: this.props.styleColorTitle,
                     colorSubtitle: this.props.styleColorSubtitle,
@@ -413,7 +413,7 @@ class PinCode extends React.PureComponent {
                             styles.colButtonCircle,
                             this.props.styleColumnButtons
                         ] },
-                        React.createElement(Animate_1.default, { show: false, start: {
+                        React.createElement(Animate_1.default, { show: true, start: {
                                 opacity: 0.5
                             }, update: {
                                 opacity: [
