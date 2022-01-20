@@ -254,7 +254,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
       !this.state.attemptFailed;
     return (
       <Animate
-        show={false}
+        show={true}
         start={{
           opacity: 1
         }}
@@ -381,7 +381,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
           return (
             <Animate
               key={val}
-              show={false}
+              show={true}
               start={{
                 opacity: 0.5,
                 height: this._circleSizeEmpty,
@@ -576,7 +576,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
           this.props.styleContainer
         ]}>
         <Animate
-          show={false}
+          show={true}
           start={{
             opacity: 0,
             colorTitle: this.props.styleColorTitle,
@@ -744,7 +744,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
                 this.props.styleColumnButtons
               ]}>
               <Animate
-                show={false}
+                show={true}
                 start={{
                   opacity: 0.5
                 }}
