@@ -1,6 +1,6 @@
 {
-  "name": "@haskkor/react-native-pincode",
-  "version": "1.22.6",
+  "name": "@fedapay/react-native-pincode",
+  "version": "1.22.7",
   "description": "React native PIN code component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Haskkor/react-native-pincode.git"
+    "url": "git+https://github.com/fedapay/react-native-pincode.git"
   },
   "author": "Jeremy Farnault",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Haskkor/react-native-pincode/issues"
+    "url": "https://github.com/fedapay/react-native-pincode/issues"
   },
-  "homepage": "https://github.com/Haskkor/react-native-pincode#readme",
+  "homepage": "https://github.com/fedapay/react-native-pincode#readme",
   "devDependencies": {
     "@types/d3-ease": "^1.0.7",
     "@types/lodash": "^4.14.104",
@@ -42,9 +42,10 @@
     "react-dom": "^16.4.1",
     "react-native": "^0.54.2",
     "react-test-renderer": "^16.4.1",
-    "typescript": "^2.7.2"
+    "typescript": "^3.7.2"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.15",
     "@react-native-community/async-storage": "^1.7.1",
     "d3-ease": "^1.0.3",
     "lodash": "^4.17.5",
