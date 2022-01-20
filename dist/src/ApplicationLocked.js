@@ -5,9 +5,7 @@ const grid_1 = require("./design/grid");
 const delay_1 = require("./delay");
 const utils_1 = require("./utils");
 const async_storage_1 = require("@react-native-async-storage/async-storage");
-const d3_ease_1 = require("d3-ease");
 const React = require("react");
-const Animate_1 = require("react-move/Animate");
 const react_native_1 = require("react-native");
 const MaterialIcons_1 = require("react-native-vector-icons/MaterialIcons");
 class ApplicationLocked extends React.PureComponent {
@@ -49,15 +47,10 @@ class ApplicationLocked extends React.PureComponent {
             const minutes = Math.floor(this.state.timeDiff / 1000 / 60);
             const seconds = Math.floor(this.state.timeDiff / 1000) % 60;
             return (React.createElement(react_native_1.View, null,
-                React.createElement(Animate_1.default, { show: true, start: {
-                        opacity: 0
-                    }, enter: {
-                        opacity: [1],
-                        timing: { delay: 1000, duration: 1500, ease: d3_ease_1.easeLinear }
-                    } }, (state) => (React.createElement(react_native_1.View, { style: [
+                React.createElement(react_native_1.View, { style: [
                         styles.viewTextLock,
                         this.props.styleViewTextLock,
-                        { opacity: state.opacity }
+                        { opacity: 1 }
                     ] },
                     this.props.titleComponent
                         ? this.props.titleComponent()
@@ -79,19 +72,14 @@ class ApplicationLocked extends React.PureComponent {
                             this.props.styleText
                         ] }, this.props.textSubDescription
                         ? this.props.textSubDescription
-                        : "Come back later and try again.")))),
-                React.createElement(Animate_1.default, { show: true, start: {
-                        opacity: 0
-                    }, enter: {
-                        opacity: [1],
-                        timing: { delay: 2000, duration: 1500, ease: d3_ease_1.easeLinear }
-                    } }, (state) => (React.createElement(react_native_1.View, { style: { opacity: state.opacity, flex: 1 } },
+                        : "Come back later and try again.")),
+                React.createElement(react_native_1.View, { style: { opacity: 1, flex: 1 } },
                     React.createElement(react_native_1.View, { style: [
                             styles.viewCloseButton,
                             this.props.styleViewButton
                         ] }, this.props.buttonComponent
                         ? this.props.buttonComponent()
-                        : this.renderButton()))))));
+                        : this.renderButton()))));
         };
         this.state = {
             timeDiff: 0

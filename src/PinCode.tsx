@@ -5,7 +5,6 @@ import { grid } from "./design/grid";
 import { easeLinear } from "d3-ease";
 import * as _ from "lodash";
 import * as React from "react";
-import Animate from "react-move/Animate";
 import {
   Dimensions,
   StyleProp,

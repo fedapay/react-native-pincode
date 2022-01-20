@@ -1,6 +1,6 @@
 {
   "name": "fedapay-react-native-pincode",
-  "version": "1.22.13",
+  "version": "1.22.15",
   "description": "React native PIN code component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -48,7 +48,6 @@
     "@react-native-async-storage/async-storage": "^1.15.15",
     "d3-ease": "^1.0.3",
     "lodash": "^4.17.5",
-    "react-move": "^6.5.0",
     "react-native-easy-grid": "^0.2.2",
     "react-native-touch-id": "^4.4.1",
     "react-native-vector-icons": "^7.0.0"

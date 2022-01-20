@@ -6,7 +6,6 @@ import { PinResultStatus } from "./utils";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { easeLinear } from "d3-ease";
 import * as React from "react";
-import Animate from "react-move/Animate";
 import {
   StyleSheet,
   View,
@@ -184,7 +183,7 @@ class ApplicationLocked extends React.PureComponent<IProps, IState> {
     const seconds = Math.floor(this.state.timeDiff / 1000) % 60;
     return (
       <View>
-        <Animate
+        {/* <Animate
           show={true}
           start={{
             opacity: 0
@@ -193,12 +192,12 @@ class ApplicationLocked extends React.PureComponent<IProps, IState> {
             opacity: [1],
             timing: { delay: 1000, duration: 1500, ease: easeLinear }
           }}>
-          {(state: any) => (
+          {(state: any) => ( */}
             <View
               style={[
                 styles.viewTextLock,
                 this.props.styleViewTextLock,
-                { opacity: state.opacity }
+                { opacity: 1 }
               ]}>
               {this.props.titleComponent
                 ? this.props.titleComponent()
@@ -230,9 +229,9 @@ class ApplicationLocked extends React.PureComponent<IProps, IState> {
                   : "Come back later and try again."}
               </Text>
             </View>
-          )}
-        </Animate>
-        <Animate
+          {/* )}
+        </Animate> */}
+        {/* <Animate
           show={true}
           start={{
             opacity: 0
@@ -241,8 +240,8 @@ class ApplicationLocked extends React.PureComponent<IProps, IState> {
             opacity: [1],
             timing: { delay: 2000, duration: 1500, ease: easeLinear }
           }}>
-          {(state: any) => (
-            <View style={{ opacity: state.opacity, flex: 1 }}>
+          {(state: any) => ( */}
+            <View style={{ opacity: 1, flex: 1 }}>
               <View
                 style={[
                   styles.viewCloseButton,
@@ -253,8 +252,8 @@ class ApplicationLocked extends React.PureComponent<IProps, IState> {
                   : this.renderButton()}
               </View>
             </View>
-          )}
-        </Animate>
+          {/* )}
+        </Animate> */}
       </View>
     );
   };
