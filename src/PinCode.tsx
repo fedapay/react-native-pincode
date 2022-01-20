@@ -253,18 +253,18 @@ class PinCode extends React.PureComponent<IProps, IState> {
         this.state.showError) &&
       !this.state.attemptFailed;
     return (
-      <Animate
-        show={true}
-        start={{
-          opacity: 1
-        }}
-        update={{
-          opacity: [
-            this.state.showError && !this.state.attemptFailed ? 0.5 : 1
-          ],
-          timing: { duration: 200, ease: easeLinear }
-        }}>
-        {({ opacity }: any) => (
+      // <Animate
+      //   show={true}
+      //   start={{
+      //     opacity: 1
+      //   }}
+      //   update={{
+      //     opacity: [
+      //       this.state.showError && !this.state.attemptFailed ? 0.5 : 1
+      //     ],
+      //     timing: { duration: 200, ease: easeLinear }
+      //   }}>
+      //   {({ opacity }: any) => (
           <TouchableHighlight
             style={[
               styles.buttonCircle,
@@ -286,7 +286,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
                 styles.text,
                 this.props.styleTextButton,
                 {
-                  opacity: opacity,
+                  opacity: 1,
                   color: this.state.textButtonSelected === text
                     ? this.props.styleColorButtonTitleSelected
                     : this.props.styleColorButtonTitle
@@ -300,7 +300,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
                   styles.tinytext,
                   this.props.styleAlphabet,
                 {
-                  opacity: opacity,
+                  opacity: 1,
                   color: this.state.textButtonSelected === text
                     ? this.props.styleColorButtonTitleSelected
                     : this.props.styleColorButtonTitle
@@ -311,8 +311,8 @@ class PinCode extends React.PureComponent<IProps, IState> {
             )}
             </View>
           </TouchableHighlight>
-        )}
-      </Animate>
+      //   )}
+      // </Animate>
     );
   };
 
@@ -379,90 +379,90 @@ class PinCode extends React.PureComponent<IProps, IState> {
             ((password.length >= val + 1 && !changeScreen) || showError) &&
             !attemptFailed;
           return (
-            <Animate
-              key={val}
-              show={true}
-              start={{
-                opacity: 0.5,
-                height: this._circleSizeEmpty,
-                width: this._circleSizeEmpty,
-                borderRadius: this._circleSizeEmpty / 2,
-                color: colorPwdEmp,
-                marginRight: 10,
-                marginLeft: 10,
-                x: 0,
-                y: 0
-              }}
-              update={{
-                x: [moveData.x],
-                opacity: [lengthSup ? 1 : 0.5],
-                height: [
-                  lengthSup ? this._circleSizeFull : this._circleSizeEmpty
-                ],
-                width: [
-                  lengthSup ? this._circleSizeFull : this._circleSizeEmpty
-                ],
-                color: [
-                  showError
-                    ? colorPwdErr
-                    : (lengthSup && password.length > 0)
-                      ? colorPwd
-                      : colorPwdEmp
-                ],
-                borderRadius: [
-                  lengthSup
-                    ? this._circleSizeFull / 2
-                    : this._circleSizeEmpty / 2
-                ],
-                marginRight: [
-                  lengthSup
-                    ? 10 - (this._circleSizeFull - this._circleSizeEmpty) / 2
-                    : 10
-                ],
-                marginLeft: [
-                  lengthSup
-                    ? 10 - (this._circleSizeFull - this._circleSizeEmpty) / 2
-                    : 10
-                ],
-                y: [moveData.y],
-                timing: { duration: 200, ease: easeLinear }
-              }}>
-              {({
-                opacity,
-                x,
-                height,
-                width,
-                color,
-                borderRadius,
-                marginRight,
-                marginLeft
-              }: any) => (
+            // <Animate
+            //   key={val}
+            //   show={true}
+            //   start={{
+            //     opacity: 0.5,
+            //     height: this._circleSizeEmpty,
+            //     width: this._circleSizeEmpty,
+            //     borderRadius: this._circleSizeEmpty / 2,
+            //     color: colorPwdEmp,
+            //     marginRight: 10,
+            //     marginLeft: 10,
+            //     x: 0,
+            //     y: 0
+            //   }}
+            //   update={{
+            //     x: [moveData.x],
+            //     opacity: [lengthSup ? 1 : 0.5],
+            //     height: [
+            //       lengthSup ? this._circleSizeFull : this._circleSizeEmpty
+            //     ],
+            //     width: [
+            //       lengthSup ? this._circleSizeFull : this._circleSizeEmpty
+            //     ],
+            //     color: [
+            //       showError
+            //         ? colorPwdErr
+            //         : (lengthSup && password.length > 0)
+            //           ? colorPwd
+            //           : colorPwdEmp
+            //     ],
+            //     borderRadius: [
+            //       lengthSup
+            //         ? this._circleSizeFull / 2
+            //         : this._circleSizeEmpty / 2
+            //     ],
+            //     marginRight: [
+            //       lengthSup
+            //         ? 10 - (this._circleSizeFull - this._circleSizeEmpty) / 2
+            //         : 10
+            //     ],
+            //     marginLeft: [
+            //       lengthSup
+            //         ? 10 - (this._circleSizeFull - this._circleSizeEmpty) / 2
+            //         : 10
+            //     ],
+            //     y: [moveData.y],
+            //     timing: { duration: 200, ease: easeLinear }
+            //   }}>
+            //   {({
+            //     opacity,
+            //     x,
+            //     height,
+            //     width,
+            //     color,
+            //     borderRadius,
+            //     marginRight,
+            //     marginLeft
+            //   }: any) => (
                   <View style={styles.viewCircles}>
                     {((!this.props.pinCodeVisible ||
                       (this.props.pinCodeVisible && !lengthSup)) && (
                         <View
                           style={[{
-                            left: x,
-                            height: height,
-                            width: width,
-                            opacity: opacity,
-                            borderRadius: borderRadius,
-                            marginLeft: marginLeft,
-                            marginRight: marginRight,
-                            backgroundColor: color
+                            left: 0,
+                            height: this._circleSizeEmpty,
+                            width: this._circleSizeEmpty,
+                            opacity: 1,
+                            borderRadius: this._circleSizeEmpty / 2,
+                            marginLeft: 10,
+                            marginRight: 10,
+                            backgroundColor: colorPwdEmp
                           }, this.props.stylePinCodeCircle]}
                         />
                       )) || (
                         <View
                           style={{
-                            left: x,
-                            opacity: opacity,
-                            marginLeft: marginLeft,
-                            marginRight: marginRight
+                            left: 0,
+                            opacity: 1,
+                            marginLeft: 10,
+                            marginRight: 10
                           }}>
                           <Text
                             style={{
-                              color: color,
+                              color: colorPwdEmp,
                               fontFamily: this.props.textPasswordVisibleFamily,
                               fontSize: this.props.textPasswordVisibleSize
                             }}>
@@ -471,8 +471,8 @@ class PinCode extends React.PureComponent<IProps, IState> {
                         </View>
                       )}
                   </View>
-                )}
-            </Animate>
+            //     )}
+            // </Animate>
           );
         })}
       </View>
@@ -575,7 +575,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
           styles.container,
           this.props.styleContainer
         ]}>
-        <Animate
+        {/* <Animate
           show={true}
           start={{
             opacity: 0,
@@ -609,32 +609,32 @@ class PinCode extends React.PureComponent<IProps, IState> {
             opacityTitle: [showError || attemptFailed ? grid.highOpacity : 1],
             timing: { duration: 200, ease: easeLinear }
           }}>
-          {({ opacity, colorTitle, colorSubtitle, opacityTitle }: any) => (
+          {({ opacity, colorTitle, colorSubtitle, opacityTitle }: any) => ( */}
             <View
               style={[
                 styles.viewTitle,
                 this.props.styleViewTitle,
-                { opacity: opacity }
+                { opacity: 1 }
               ]}>
               {this.props.titleComponent
                 ? this.props.titleComponent()
                 : this.renderTitle(
-                  colorTitle,
-                  opacityTitle,
+                  this.props.styleColorTitle,
+                  1,
                   attemptFailed,
                   showError
                 )}
               {this.props.subtitleComponent
                 ? this.props.subtitleComponent()
                 : this.renderSubtitle(
-                  colorSubtitle,
-                  opacityTitle,
+                  this.props.styleColorSubtitle,
+                  1,
                   attemptFailed,
                   showError
                 )}
             </View>
-          )}
-        </Animate>
+          {/* )}
+        </Animate> */}
         <View style={styles.flexCirclePassword}>
           {this.props.passwordComponent
             ? this.props.passwordComponent()
@@ -743,7 +743,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
                 styles.colButtonCircle,
                 this.props.styleColumnButtons
               ]}>
-              <Animate
+              {/* <Animate
                 show={true}
                 start={{
                   opacity: 0.5
@@ -757,7 +757,8 @@ class PinCode extends React.PureComponent<IProps, IState> {
                   ],
                   timing: { duration: 400, ease: easeLinear }
                 }}>
-                {({ opacity }: any) =>
+                {({ opacity }: any) => */}
+                {
                   this.props.buttonDeleteComponent
                     ? this.props.buttonDeleteComponent(() => {
                       if (this.state.password.length > 0) {
@@ -767,9 +768,10 @@ class PinCode extends React.PureComponent<IProps, IState> {
                           this.props.getCurrentLength(newPass.length);
                       }
                     })
-                    : this.renderButtonDelete(opacity)
+                    : this.renderButtonDelete(1)
                 }
-              </Animate>
+              {/* }
+               </Animate> */}
             </Col>
           </Row>
         </Grid>
