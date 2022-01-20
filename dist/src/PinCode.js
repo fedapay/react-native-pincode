@@ -209,7 +209,7 @@ class PinCode extends React.PureComponent {
                 //     marginRight,
                 //     marginLeft
                 //   }: any) => (
-                React.createElement(react_native_1.View, { style: styles.viewCircles }, ((!this.props.pinCodeVisible ||
+                React.createElement(react_native_1.View, { style: styles.viewCircles, key: val }, ((!this.props.pinCodeVisible ||
                     (this.props.pinCodeVisible && !lengthSup)) && (React.createElement(react_native_1.View, { style: [{
                             left: 0,
                             height: this._circleSizeEmpty,

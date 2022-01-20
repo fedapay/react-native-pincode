@@ -436,7 +436,7 @@ class PinCode extends React.PureComponent<IProps, IState> {
             //     marginRight,
             //     marginLeft
             //   }: any) => (
-                  <View style={styles.viewCircles}>
+                  <View style={styles.viewCircles} key={val}>
                     {((!this.props.pinCodeVisible ||
                       (this.props.pinCodeVisible && !lengthSup)) && (
                         <View

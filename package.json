@@ -1,6 +1,6 @@
 {
   "name": "fedapay-react-native-pincode",
-  "version": "1.22.15",
+  "version": "1.22.16",
   "description": "React native PIN code component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
