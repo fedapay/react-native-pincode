@@ -211,22 +211,40 @@ class PinCode extends React.PureComponent {
                 //   }: any) => (
                 React.createElement(react_native_1.View, { style: styles.viewCircles, key: val }, ((!this.props.pinCodeVisible ||
                     (this.props.pinCodeVisible && !lengthSup)) && (React.createElement(react_native_1.View, { style: [{
-                            left: 0,
-                            height: this._circleSizeEmpty,
-                            width: this._circleSizeEmpty,
+                            left: moveData.x,
+                            height: lengthSup ? this._circleSizeFull : this._circleSizeEmpty,
+                            width: lengthSup ? this._circleSizeFull : this._circleSizeEmpty,
                             opacity: 1,
-                            borderRadius: this._circleSizeEmpty / 2,
-                            marginLeft: 10,
-                            marginRight: 10,
-                            backgroundColor: colorPwdEmp
+                            borderRadius: lengthSup
+                                ? this._circleSizeFull / 2
+                                : this._circleSizeEmpty / 2,
+                            marginLeft: lengthSup
+                                ? 10 - (this._circleSizeFull - this._circleSizeEmpty) / 2
+                                : 10,
+                            marginRight: lengthSup
+                                ? 10 - (this._circleSizeFull - this._circleSizeEmpty) / 2
+                                : 10,
+                            backgroundColor: showError
+                                ? colorPwdErr
+                                : (lengthSup && password.length > 0)
+                                    ? colorPwd
+                                    : colorPwdEmp
                         }, this.props.stylePinCodeCircle] }))) || (React.createElement(react_native_1.View, { style: {
-                        left: 0,
+                        left: moveData.x,
                         opacity: 1,
-                        marginLeft: 10,
-                        marginRight: 10
+                        marginLeft: lengthSup
+                            ? 10 - (this._circleSizeFull - this._circleSizeEmpty) / 2
+                            : 10,
+                        marginRight: lengthSup
+                            ? 10 - (this._circleSizeFull - this._circleSizeEmpty) / 2
+                            : 10,
                     } },
                     React.createElement(react_native_1.Text, { style: {
-                            color: colorPwdEmp,
+                            color: showError
+                                ? colorPwdErr
+                                : (lengthSup && password.length > 0)
+                                    ? colorPwd
+                                    : colorPwdEmp,
                             fontFamily: this.props.textPasswordVisibleFamily,
                             fontSize: this.props.textPasswordVisibleSize
                         } }, this.state.password[val]))))
